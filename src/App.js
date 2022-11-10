@@ -22,7 +22,7 @@ function App() {
       createUserWithEmailAndPassword(authentication,email, password).then(
         (res)=>{
         // console.log(res);
-        navigate("/home");
+        navigate("/");
         sessionStorage.setItem('auth', res._tokenResponse.RefreshToken)
       }).catch(e=>{
         if(e.code === 'auth/wrong-password'){
@@ -37,7 +37,7 @@ function App() {
       signInWithEmailAndPassword(authentication,email, password).then(
         (res)=>{
         // console.log(res);
-        navigate("/home");
+        navigate("/");
         sessionStorage.setItem('auth', res._tokenResponse.RefreshToken)
       }).catch(e=>{
         if(e.code === 'auth/wrong-password'){
@@ -53,7 +53,7 @@ function App() {
     <>
      
         <Routes>
-          <Route path="/home" element={<Home/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route
             path="/login"
             element={

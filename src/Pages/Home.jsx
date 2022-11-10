@@ -9,12 +9,12 @@ const Home = () => {
     (() => {
       let authToken = sessionStorage.getItem("auth");
       if (authToken) {
-        navigate("/home");
+        navigate("/");
       }
       if (!authToken) {
         navigate("/login");
       }
-    });
+    },[]);
 
   const logout=()=>{
     sessionStorage.removeItem("auth");
