@@ -14,8 +14,7 @@ const Home = () => {
       if (!authToken) {
         navigate("/login");
       }
-    },
-    []);
+    });
 
   const logout=()=>{
     sessionStorage.removeItem("auth");

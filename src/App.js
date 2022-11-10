@@ -1,9 +1,9 @@
 import "./App.scss";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Form from "./Components/Elements/Form";
-// import {app} from "./firebase"
+import {app} from "./firebase"
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth'
 import Home from "./Pages/Home";
 
@@ -25,10 +25,10 @@ function App() {
         navigate("/home");
         sessionStorage.setItem('auth', res._tokenResponse.RefreshToken)
       }).catch(e=>{
-        if(e.code == 'auth/wrong-password'){
+        if(e.code === 'auth/wrong-password'){
           toast.error('Check the password')
         }
-        if(e.code == 'auth/invalid-email'){
+        if(e.code === 'auth/invalid-email'){
           toast.error('Check the email')
         }
       })   
@@ -40,10 +40,10 @@ function App() {
         navigate("/home");
         sessionStorage.setItem('auth', res._tokenResponse.RefreshToken)
       }).catch(e=>{
-        if(e.code == 'auth/wrong-password'){
+        if(e.code === 'auth/wrong-password'){
           toast.error('Check the password')
         }
-        if(e.code == 'auth/user-not-found'){
+        if(e.code === 'auth/user-not-found'){
           toast.error('Check the email')
         }
       })
