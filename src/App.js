@@ -3,14 +3,16 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Form from "./Components/Elements/Form";
-import {app} from "./firebase"
+import db from "./firebase"
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth'
 import Home from "./Pages/Home";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { collection, addDoc } from "firebase/firestore";
 
 function App() {
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate =useNavigate();
@@ -22,16 +24,14 @@ function App() {
       createUserWithEmailAndPassword(authentication,email, password).then(
         (res)=>{
         // console.log(res);
-        navigate("/");
+        navigate("/login");
+        toast.info('Created Successfully');
         sessionStorage.setItem('auth', res._tokenResponse.RefreshToken)
-      }).catch(e=>{
-        if(e.code === 'auth/wrong-password'){
-          toast.error('Check the password')
-        }
-        if(e.code === 'auth/invalid-email'){
-          toast.error('Check the email')
-        }
-      })   
+        addDoc(collection(db, "auth"), {
+          email:email,
+          password:password
+        });
+      })  
     }
     if(id===1){
       signInWithEmailAndPassword(authentication,email, password).then(
