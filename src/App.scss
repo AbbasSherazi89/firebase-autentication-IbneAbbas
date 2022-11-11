@@ -16,11 +16,20 @@
 
 }
 .form-row{
+  
     display: flex;
     align-items: center;
     justify-content: center;
-    // border: 2px solid red;
-    margin-left: 40rem;
+    // margin-left: 40rem;
+    .form-row2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-colmn{
+        // background: rgb(206, 208, 208);
+        box-shadow: 10px 10px 20px grey;
+    }
     .img-fluid{
         height: 100%;
         max-width: 100%;
