@@ -4,12 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Form from "./Components/Elements/Form";
 import db from "./firebase"
-import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth'
 import Home from "./Pages/Home";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, addDoc } from "firebase/firestore";
+import Forgot from "./Components/Elements/Forgot";
 
 function App() {
  
@@ -17,6 +18,15 @@ function App() {
   const [password, setPassword] = useState("");
   const navigate =useNavigate();
 
+  const handleSubmit = () => {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log('Email sent')
+      }).catch((error) => {
+        console.log(error)
+      });
+  };
   const handleAction = (id) => {
     console.log(id);
     const authentication = getAuth();
@@ -77,6 +87,7 @@ function App() {
             }
           />
           
+          <Route path="/forgot" element={<Forgot title="Forgot" setEmail={setEmail} handleSubmit={handleSubmit()}/>}/>
         </Routes>
         <ToastContainer />
     </>

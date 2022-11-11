@@ -21,11 +21,16 @@ const Home = () => {
   };
   return (
     <>
-      <section className="signin-sec">
+      <section className="home-sec">
         <div className="pt-5">
           <h2 className="text-center fw-bold">Home</h2>
         </div>
         <Button onClick={logout}>Logout</Button>
+        <lord-icon
+          src="https://cdn.lordicon.com/lupuorrc.json"
+          trigger="hover"
+          style={{width:'250px',height:'250px'}}
+        ></lord-icon>
       </section>
     </>
   );

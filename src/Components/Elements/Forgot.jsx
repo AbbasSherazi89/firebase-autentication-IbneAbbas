@@ -3,7 +3,11 @@ import React from "react";
 import { TextField } from "@mui/material";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
-const Form = ({ title, setEmail, setPassword, handleAction }) => {
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth'
+
+const Forgot = ({ title, setEmail, handleSubmit}) => {
+
+
   return (
     <>
       <section className="signin-sec">
@@ -12,7 +16,7 @@ const Form = ({ title, setEmail, setPassword, handleAction }) => {
             <div className="col-md-7 form-colmn">
               <div className="row form-row2">
                 <div className="pt-4">
-                  <h2 className="text-center fw-bold"> {title} Form</h2>
+                  <h2 className="text-center fw-bold"> {title} Password</h2>
                 </div>
                 <div className="col-md-4 form-colmn1">
                   <img className="img-fluid" src="assets/signup.svg" alt="" />
@@ -27,20 +31,13 @@ const Form = ({ title, setEmail, setPassword, handleAction }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <br />
-                  <TextField
-                    className="my-3"
-                    id="password"
-                    label="Password"
-                    type="password"
-                    variant="outlined"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+
                   <br />
-                  <FormButton title={title} handleAction={handleAction} />
+                  <FormButton title={title} onClick={handleSubmit} />
                   <br />
                   <p className="text-start">
-                    <Link className="text-decoration-none" to="/forgot">
-                      Forgot Password?
+                    <Link className="text-decoration-none" to="/login">
+                      Login
                     </Link>
                   </p>
                 </div>
@@ -53,4 +50,4 @@ const Form = ({ title, setEmail, setPassword, handleAction }) => {
   );
 };
 
-export default Form;
+export default Forgot;
