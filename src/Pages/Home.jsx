@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     let authToken = sessionStorage.getItem("auth");
     if (authToken) {
-      navigate("/");
+      navigate("/home");
     }
     if (!authToken) {
       navigate("/login");

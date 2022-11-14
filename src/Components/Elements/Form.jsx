@@ -1,5 +1,4 @@
 import React from "react";
-// import Box from '@mui/material/Box';
 import { TextField } from "@mui/material";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
@@ -14,8 +13,8 @@ const Form = ({ title, setEmail, setPassword, handleAction }) => {
                 <div className="pt-4">
                   <h2 className="text-center fw-bold"> {title} Form</h2>
                 </div>
-                <div className="col-md-4 form-colmn1">
-                  <img className="img-fluid" src="assets/signup.svg" alt="" />
+                <div className="col-md-5 form-colmn1">
+                  <img className="img-fluid" src="assets/form-pic.webp" alt="" />
                 </div>
                 <div className="col-md-6 form-colmn2 py-5">
                   <TextField

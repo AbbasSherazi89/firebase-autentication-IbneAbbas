@@ -3,7 +3,6 @@ import React from "react";
 import { TextField } from "@mui/material";
 import FormButton from "./FormButton";
 import { Link } from "react-router-dom";
-import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth'
 
 const Forgot = ({ title, setEmail, handleSubmit}) => {
 
@@ -18,8 +17,8 @@ const Forgot = ({ title, setEmail, handleSubmit}) => {
                 <div className="pt-4">
                   <h2 className="text-center fw-bold"> {title} Password</h2>
                 </div>
-                <div className="col-md-4 form-colmn1">
-                  <img className="img-fluid" src="assets/signup.svg" alt="" />
+                <div className="col-md-5 form-colmn1">
+                  <img className="img-fluid" src="assets/form-pic.webp" alt="" />
                 </div>
                 <div className="col-md-6 form-colmn2 py-5">
                   <TextField
